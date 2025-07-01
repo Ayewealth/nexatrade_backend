@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to NexaTrade</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset styles */
+      body,
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      table,
+      td {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Base styles */
+      body {
+        background-color: #f9f9f9;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      /* Container */
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Header */
+      .header {
+        background-color: #0a5d36; /* refined dark green */
+        padding: 35px 0;
+        text-align: center;
+      }
+
+      .logo {
+        color: #ffffff;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      .logo-accent {
+        color: #ffd700; /* gold accent */
+      }
+
+      /* Hero section */
+      .hero {
+        background-color: #f2f7f4;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .welcome-icon {
+        margin-bottom: 20px;
+      }
+
+      /* Content */
+      .content {
+        padding: 40px 30px;
+        text-align: center;
+      }
+
+      .title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #0a5d36; /* dark green */
+        margin-bottom: 20px;
+      }
+
+      .message {
+        font-size: 17px;
+        color: #555555;
+        margin-bottom: 25px;
+        font-weight: 400;
+        padding: 0 15px;
+        line-height: 1.7;
+      }
+
+      /* Feature boxes */
+      .features {
+        display: table;
+        width: 100%;
+        margin: 30px 0;
+        border-collapse: separate;
+        border-spacing: 15px;
+      }
+
+      .feature-box {
+        display: table-cell;
+        width: 33.33%;
+        background-color: #f9f9f9;
+        padding: 20px 15px;
+        border-radius: 8px;
+        text-align: center;
+        vertical-align: top;
+      }
+
+      .feature-icon {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #0a5d36;
+      }
+
+      .feature-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #0a5d36;
+      }
+
+      .feature-text {
+        font-size: 14px;
+        color: #666666;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: #ffd700; /* gold */
+        color: #333333;
+        font-weight: 600;
+        padding: 15px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 16px;
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+      }
+
+      .cta-button:hover {
+        background-color: #e6c200;
+        color: #333333;
+      }
+
+      /* Social proof */
+      .social-proof {
+        background-color: #f2f7f4;
+        padding: 25px;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .social-proof-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #0a5d36;
+        margin-bottom: 15px;
+      }
+
+      .rating {
+        color: #ffd700;
+        font-size: 20px;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #f5f5f5;
+        padding: 30px;
+        text-align: center;
+        color: #777777;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .footer p {
+        margin-bottom: 12px;
+      }
+
+      .social-links {
+        margin: 20px 0;
+      }
+
+      .social-link {
+        display: inline-block;
+        margin: 0 8px;
+        color: #0a5d36;
+        font-size: 18px;
+        text-decoration: none;
+      }
+
+      .divider {
+        height: 1px;
+        background-color: #dddddd;
+        margin: 20px 0;
+        border-radius: 1px;
+      }
+
+      .footer-links {
+        margin: 15px 0;
+      }
+
+      .footer-link {
+        color: #0a5d36;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: 500;
+      }
+
+      /* Responsive */
+      @media screen and (max-width: 600px) {
+        .content {
+          padding: 30px 20px;
+        }
+
+        .title {
+          font-size: 22px;
+        }
+
+        .message {
+          font-size: 16px;
+        }
+
+        .cta-button {
+          padding: 12px 25px;
+          font-size: 14px;
+        }
+
+        .features {
+          display: block;
+        }
+
+        .feature-box {
+          display: block;
+          width: 100%;
+          margin-bottom: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table
+      width="100%"
+      border="0"
+      cellspacing="0"
+      cellpadding="0"
+      bgcolor="#f9f9f9"
+    >
+      <tr>
+        <td align="center" style="padding: 30px 0">
+          <table
+            class="container"
+            width="600"
+            border="0"
+            cellspacing="0"
+            cellpadding="0"
+            bgcolor="#ffffff"
+          >
+            <!-- Header -->
+            <tr>
+              <td class="header" align="center">
+                <div class="logo">
+                  NEXA<span class="logo-accent">TRADE</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Hero Section -->
+            <tr>
+              <td class="hero" align="center">
+                <div class="welcome-icon">
+                  <!-- Using emoji for compatibility -->
+                  <span style="font-size: 48px">🚀</span>
+                </div>
+                <h1 class="title">
+                  Welcome to NexaTrade, {{ user.full_name|default:user.email }}!
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Content -->
+            <tr>
+              <td class="content" align="center">
+                <p class="message">
+                  Thank you for choosing NexaTrade as your trusted trading
+                  platform. We're thrilled to have you join our community of
+                  traders and investors!
+                </p>
+
+                <p class="message">
+                  To start trading and access all premium features, please
+                  complete your <strong>KYC verification</strong>. This quick
+                  process helps us maintain a secure trading environment for all
+                  our users.
+                </p>
+
+                <a
+                  href="{{ kyc_verification_link }}"
+                  class="cta-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Complete Verification Now
+                </a>
+
+                <!-- Features -->
+                <table
+                  class="features"
+                  width="100%"
+                  border="0"
+                  cellspacing="0"
+                  cellpadding="0"
+                >
+                  <tr>
+                    <td class="feature-box">
+                      <div class="feature-icon">🔒</div>
+                      <div class="feature-title">Secure Trading</div>
+                      <div class="feature-text">
+                        Bank-grade security for all your transactions
+                      </div>
+                    </td>
+                    <td class="feature-box">
+                      <div class="feature-icon">📊</div>
+                      <div class="feature-title">Advanced Analytics</div>
+                      <div class="feature-text">
+                        Real-time market data and insights
+                      </div>
+                    </td>
+                    <td class="feature-box">
+                      <div class="feature-icon">💼</div>
+                      <div class="feature-title">Portfolio Management</div>
+                      <div class="feature-text">
+                        Track and optimize your investments
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Social Proof -->
+            <tr>
+              <td class="social-proof" align="center">
+                <div class="social-proof-title">
+                  Trusted by traders worldwide
+                </div>
+                <div class="rating">★★★★★</div>
+                <p style="font-size: 14px; color: #666666">
+                  Join over 100,000+ traders who have chosen NexaTrade
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td class="footer" align="center">
+                <div class="social-links">
+                  <a href="#" class="social-link">📱</a>
+                  <a href="#" class="social-link">📘</a>
+                  <a href="#" class="social-link">📸</a>
+                  <a href="#" class="social-link">🐦</a>
+                </div>
+                <div class="footer-links">
+                  <a href="#" class="footer-link">Help Center</a>
+                  <a href="#" class="footer-link">Privacy Policy</a>
+                  <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+                <div class="divider"></div>
+                <p>© 2025 NexaTrade. All rights reserved.</p>
+                <p>
+                  This is an automated message, please do not reply to this
+                  email.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
