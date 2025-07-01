@@ -36,8 +36,9 @@ ENVIRONMENT = config('ENVIRONMENT', default='development')
 FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
 
 if ENVIRONMENT == "production":
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-    CSRF_TRUSTED_ORIGINS = []
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                     'nexatrade-backend.onrender.com']
+    CSRF_TRUSTED_ORIGINS = ["https://nexatrade-backend.onrender.com/"]
 else:
     ALLOWED_HOSTS = ["*"]
 
