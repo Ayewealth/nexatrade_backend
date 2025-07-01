@@ -229,6 +229,7 @@ else:
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://nexatrade.vercel.app"
 ]
 
 REST_FRAMEWORK = {
