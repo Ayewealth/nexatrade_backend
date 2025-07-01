@@ -28283,3 +28283,10 @@ INFO 2025-07-01 16:59:58,310 tasks 13728 20528 Trade profits updated successfull
 INFO 2025-07-01 16:59:58,376 tasks 13728 20528 Trade profits updated successfully
 INFO 2025-07-01 16:59:58,404 tasks 13728 20528 Closed 0 scheduled auto-trades
 INFO 2025-07-01 16:59:58,463 tasks 13728 20528 Trade profits updated successfully
+INFO 2025-07-01 17:06:22,671 tasks 13728 20528 Market prices updated successfully.
+INFO 2025-07-01 17:06:22,735 tasks 13728 20528 Trade profits updated successfully
+INFO 2025-07-01 17:06:22,769 tasks 13728 20528 Trade profits updated successfully
+INFO 2025-07-01 17:06:22,804 tasks 13728 20528 Trade profits updated successfully
+INFO 2025-07-01 17:06:22,838 tasks 13728 20528 Trade profits updated successfully
+INFO 2025-07-01 17:06:22,853 tasks 13728 20528 Closed 0 scheduled auto-trades
+ERROR 2025-07-01 17:10:34,492 tasks 13728 20528 Error updating market prices: <class 'celery.concurrency.solo.TaskPool'> does not implement kill_job
