@@ -19,4 +19,6 @@ urlpatterns = [
          name='password-reset-confirm'),
     path('profile/', UserProfileUpdateView.as_view(), name='user-profile-update'),
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),
+    path('admin/create-user/', AdminCreateUserView.as_view(),
+         name='admin-create-user'),
 ]

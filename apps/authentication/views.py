@@ -172,3 +172,15 @@ class ChangePasswordView(generics.UpdateAPIView):
         user.save()
 
         return Response({"detail": "Password changed successfully."}, status=status.HTTP_200_OK)
+
+
+class AdminCreateUserView(generics.CreateAPIView):
+    serializer_class = AdminCreateUserSerializer
+    permission_classes = [permissions.IsAuthenticated]  # Only superusers
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            return Response({"detail": "User created successfully.", "user": UserSerializer(user).data}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
