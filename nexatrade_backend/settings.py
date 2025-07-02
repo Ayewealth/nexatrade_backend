@@ -19,7 +19,9 @@ import os
 import sys
 
 print("RAILWAY_ENVIRONMENT:", os.environ.get("RAILWAY_ENVIRONMENT"))
-BUILDING = 'collectstatic' in sys.argv or 'migrate' in sys.argv
+BUILDING = any(cmd in sys.argv for cmd in [
+               'collectstatic', 'migrate']) and os.environ.get("RAILWAY_ENVIRONMENT")
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

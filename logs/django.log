@@ -28336,3 +28336,5 @@ INFO 2025-07-02 22:13:19,589 autoreload 23584 15504 C:\Users\Admin\OneDrive - in
 INFO 2025-07-02 22:13:27,584 autoreload 35020 33500 Watching for file changes with StatReloader
 INFO 2025-07-02 22:17:47,432 autoreload 35020 33500 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\settings.py changed, reloading.
 INFO 2025-07-02 22:17:57,128 autoreload 34520 26628 Watching for file changes with StatReloader
+INFO 2025-07-02 22:19:22,654 autoreload 34520 26628 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\settings.py changed, reloading.
+INFO 2025-07-02 22:19:30,706 autoreload 31236 10076 Watching for file changes with StatReloader
