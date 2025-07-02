@@ -146,26 +146,28 @@ else:
     }
 
 if not BUILDING:
-    CACHES = {
-        'default': {
-            'BACKEND': 'django_redis.cache.RedisCache',
-            'LOCATION': config(
-                "REDIS_CACHE_URL", default="redis://localhost:6379/1"),
-            'OPTIONS': {
-                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+    try:
+        CACHES = {
+            'default': {
+                'BACKEND': 'django_redis.cache.RedisCache',
+                'LOCATION': config("REDIS_CACHE_URL", default="redis://localhost:6379/1"),
+                'OPTIONS': {
+                    'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+                }
             }
         }
-    }
-if not BUILDING:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                # Parse your Redis URL from env and convert to host-port tuple
-                "hosts": [tuple(config("REDIS_CHANNEL_URL", default="127.0.0.1:6379").split(":"))],
+
+        CHANNEL_LAYERS = {
+            "default": {
+                "BACKEND": "channels_redis.core.RedisChannelLayer",
+                "CONFIG": {
+                    "hosts": [tuple(config("REDIS_CHANNEL_URL", default="127.0.0.1:6379").split(":"))],
+                },
             },
-        },
-    }
+        }
+    except Exception as e:
+        print("Redis configuration error:", e)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
