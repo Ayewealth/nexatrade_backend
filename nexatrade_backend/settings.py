@@ -41,8 +41,9 @@ FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
 
 if ENVIRONMENT == "production":
     ALLOWED_HOSTS = ['localhost', '127.0.0.1',
-                     'nexatrade-backend.onrender.com']
-    CSRF_TRUSTED_ORIGINS = ["https://nexatrade-backend.onrender.com/"]
+                     'nexatrade-backend.onrender.com', 'nexatradebackend-production.up.railway.app']
+    CSRF_TRUSTED_ORIGINS = ["https://nexatrade-backend.onrender.com/",
+                            "https://nexatradebackend-production.up.railway.app/"]
 else:
     ALLOWED_HOSTS = ["*"]
 
@@ -144,26 +145,27 @@ else:
         )
     }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': config(
-            "REDIS_CACHE_URL", default="redis://localhost:6379/1"),
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+if not BUILDING:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': config(
+                "REDIS_CACHE_URL", default="redis://localhost:6379/1"),
+            'OPTIONS': {
+                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            }
         }
     }
-}
-
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            # Parse your Redis URL from env and convert to host-port tuple
-            "hosts": [tuple(config("REDIS_CHANNEL_URL", default="127.0.0.1:6379").split(":"))],
+if not BUILDING:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                # Parse your Redis URL from env and convert to host-port tuple
+                "hosts": [tuple(config("REDIS_CHANNEL_URL", default="127.0.0.1:6379").split(":"))],
+            },
         },
-    },
-}
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
