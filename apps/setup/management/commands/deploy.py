@@ -1,26 +1,22 @@
-from django.apps import AppConfig
-from django.db.models.signals import post_migrate
-import logging
+from django.core.management.base import BaseCommand
+from django.core.management import call_command
 import os
-import sys
-
-BUILDING = 'collectstatic' in sys.argv or 'migrate' in sys.argv
+import logging
 
 
-class SetupConfig(AppConfig):
-    default_auto_field = "django.db.models.BigAutoField"
-    name = "apps.setup"
+class Command(BaseCommand):
+    help = "Deploy command: runs migrations and optional data initialization."
 
-    def ready(self):
-        if not BUILDING:
-            post_migrate.connect(run_initialize_data, sender=self)
+    def handle(self, *args, **options):
+        self.stdout.write(self.style.NOTICE("🚀 Running migrations..."))
+        call_command("migrate")
 
-
-def run_initialize_data(sender, **kwargs):
-    if os.environ.get("RUN_INITIALIZE_DATA", "false").lower() == "true":
-        from django.core.management import call_command
-        try:
-            print("Running initialize_data after migrations...")
-            call_command('initialize_data')
-        except Exception as e:
-            logging.error(f"Error running initialize_data: {e}")
+        if os.environ.get("RUN_INITIALIZE_DATA", "false").lower() == "true":
+            try:
+                self.stdout.write(self.style.NOTICE(
+                    "📦 Running initialize_data..."))
+                call_command("initialize_data")
+            except Exception as e:
+                logging.error(f"❌ Error running initialize_data: {e}")
+                self.stderr.write(self.style.ERROR(
+                    f"Failed to run initialize_data: {e}"))
