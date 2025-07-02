@@ -16,6 +16,10 @@ from decouple import config
 
 import dj_database_url
 import os
+import sys
+
+print("RAILWAY_ENVIRONMENT:", os.environ.get("RAILWAY_ENVIRONMENT"))
+BUILDING = 'collectstatic' in sys.argv or 'migrate' in sys.argv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,13 +126,23 @@ AUTH_USER_MODEL = 'authentication.User'
 #         }
 #     }
 # else:
-DATABASES = {
-    "default": dj_database_url.config(
-        default=config('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=False
-    )
-}
+if os.environ.get('RAILWAY_ENVIRONMENT') and BUILDING:
+    # On Railway during build, use SQLite to avoid DB errors
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': ':memory:',
+        }
+    }
+else:
+    # Normal DB config (works locally and in production)
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=config('DATABASE_URL'),
+            conn_max_age=600,
+            ssl_require=False
+        )
+    }
 
 CACHES = {
     'default': {
