@@ -1,5 +1,6 @@
 from django.apps import AppConfig
-from django.db.utils import OperationalError, ProgrammingError
+from django.db.models.signals import post_migrate
+import logging
 
 
 class TradingConfig(AppConfig):
@@ -7,10 +8,16 @@ class TradingConfig(AppConfig):
     name = "apps.trading"
 
     def ready(self):
-        try:
-            from .tasks import create_or_update_profit_task, create_or_update_market_price_task
-            create_or_update_profit_task()
-            create_or_update_market_price_task()
-        except (OperationalError, ProgrammingError):
-            # This means tables aren't ready yet, so skip for now
-            pass
+        post_migrate.connect(run_trading_tasks, sender=self)
+
+
+def run_trading_tasks(sender, **kwargs):
+    try:
+        from .tasks import (
+            create_or_update_profit_task,
+            create_or_update_market_price_task
+        )
+        create_or_update_profit_task()
+        create_or_update_market_price_task()
+    except Exception as e:
+        logging.warning(f"Post-migrate trading task error: {e}")
