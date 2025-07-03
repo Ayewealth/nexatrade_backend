@@ -17,16 +17,16 @@ class Command(BaseCommand):
                 f"Failed to populate crypto types: {e}"))
 
         try:
+            call_command('populate_markets')
+            self.stdout.write(self.style.SUCCESS("Markets populated."))
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(
+                f"Failed to populate markets: {e}"))
+
+        try:
             call_command('populate_coinpaprika_logo')
             self.stdout.write(self.style.SUCCESS(
                 "Updates your CryptoType model with correct CoinPaprika Logo Url."))
         except Exception as e:
             self.stdout.write(self.style.ERROR(
                 f"Failed to populate crypto types with CoinPaprika Logo Url: {e}"))
-
-        try:
-            call_command('populate_markets')
-            self.stdout.write(self.style.SUCCESS("Markets populated."))
-        except Exception as e:
-            self.stdout.write(self.style.ERROR(
-                f"Failed to populate markets: {e}"))
