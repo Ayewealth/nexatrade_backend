@@ -60,31 +60,14 @@ class TransactionViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def get_crypto_price(self, crypto_type):
-        """Get current price of cryptocurrency in USD"""
+        from apps.trading.models import Market
+
         try:
-            if crypto_type.coingecko_id:
-                # Using CoinGecko API
-                url = f"https://api.coingecko.com/api/v3/simple/price?ids={crypto_type.coingecko_id}&vs_currencies=usd"
-                response = requests.get(url, timeout=10)
-                if response.status_code == 200:
-                    data = response.json()
-                    return Decimal(str(data[crypto_type.coingecko_id]['usd']))
-
-            elif crypto_type.coinpaprika_id:
-                # Using CoinPaprika API as fallback
-                url = f"https://api.coinpaprika.com/v1/tickers/{crypto_type.coinpaprika_id}"
-                response = requests.get(url, timeout=10)
-                if response.status_code == 200:
-                    data = response.json()
-                    return Decimal(str(data['quotes']['USD']['price']))
-
-            # Fallback: return a default price or raise an error
-            raise ValueError("No price data available")
-
-        except Exception as e:
-            # In production, you might want to log this error
-            raise ValueError(
-                f"Failed to get price for {crypto_type.symbol}: {str(e)}")
+            market = Market.objects.get(
+                base_currency=crypto_type, quote_currency='USD')
+            return Decimal(str(market.current_price))
+        except Market.DoesNotExist:
+            raise ValueError(f"No market data found for {crypto_type.symbol}")
 
     @swagger_auto_schema(method='post', request_body=DepositRequestSerializer)
     @action(detail=False, methods=['post'])
