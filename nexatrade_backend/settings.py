@@ -163,7 +163,7 @@ if not BUILDING:
             "default": {
                 "BACKEND": "channels_redis.core.RedisChannelLayer",
                 "CONFIG": {
-                    "hosts": [tuple(config("REDIS_CHANNEL_URL", default="127.0.0.1:6379").split(":"))],
+                    "hosts": [config("REDIS_CHANNEL_URL", default="redis://127.0.0.1:6379")],
                 },
             },
         }
