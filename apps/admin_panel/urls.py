@@ -4,7 +4,7 @@ from .views import *
 
 router = DefaultRouter()
 
-router.register(r'admin-actions', AdminActionViewSet)
+router.register(r'admin-actions', AdminActionViewSet, basename="admin-actions")
 router.register(r'admin-operations', AdminOperationsViewSet,
                 basename='admin-operations')
 

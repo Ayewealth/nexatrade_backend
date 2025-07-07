@@ -19,9 +19,12 @@ class CryptoWalletViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         """Only allow users to see their own wallets"""
-        if self.request.user.is_staff:
+        if getattr(self, 'swagger_fake_view', False):
+            return CryptoWallet.objects.none()
+        user = self.request.user
+        if user.is_staff:
             return CryptoWallet.objects.all()
-        return CryptoWallet.objects.filter(user=self.request.user)
+        return CryptoWallet.objects.filter(user=user)
 
 
 class USDWalletViewSet(viewsets.ReadOnlyModelViewSet):
@@ -31,6 +34,8 @@ class USDWalletViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         """Only allow users to see their own wallets"""
+        if getattr(self, 'swagger_fake_view', False):
+            return USDWallet.objects.none()
         # if self.request.user.is_staff:
         #     return USDWallet.objects.all()
         return USDWallet.objects.filter(user=self.request.user)

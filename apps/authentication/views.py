@@ -85,9 +85,17 @@ class KYCViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Only allow users to see their own KYC documents"""
-        if self.request.user.is_staff:
+        # Prevent error during schema generation
+        if getattr(self, 'swagger_fake_view', False):
+            return KYCDocument.objects.none()
+
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            return KYCDocument.objects.none()
+
+        if user.is_staff:
             return KYCDocument.objects.all()
-        return KYCDocument.objects.filter(user=self.request.user)
+        return KYCDocument.objects.filter(user=user)
 
     def perform_create(self, serializer):
         """Assign current user when creating KYC document"""

@@ -19,9 +19,19 @@ from drf_yasg.utils import swagger_auto_schema
 
 class AdminActionViewSet(viewsets.ModelViewSet):
     """ViewSet for admin actions"""
-    queryset = AdminAction.objects.all()
     serializer_class = AdminActionSerializer
     permission_classes = [IsAdminUser]
+
+    def get_queryset(self):
+        # Prevent schema generation crash
+        if getattr(self, 'swagger_fake_view', False):
+            return AdminAction.objects.none()
+
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            return AdminAction.objects.none()
+
+        return AdminAction.objects.all()
 
     def perform_create(self, serializer):
         """Set admin user when creating an action"""

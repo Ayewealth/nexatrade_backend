@@ -22,13 +22,13 @@ class TradeViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        """Only allow users to see their own trades"""
+        """Only allow users to see their own trades, staff can see all."""
         if getattr(self, 'swagger_fake_view', False):
             return Trade.objects.none()
-
-        if self.request.user.is_staff:
+        user = self.request.user
+        if user.is_staff:
             return Trade.objects.all()
-        return Trade.objects.filter(user=self.request.user)
+        return Trade.objects.filter(user=user)
 
     def create(self, request, *args, **kwargs):
         """Create a new trade"""

@@ -19,12 +19,16 @@ class ChatConversationViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        if self.request.user.is_staff:
-            # Admin can see all conversations
+        if getattr(self, 'swagger_fake_view', False):
+            return ChatConversation.objects.none()
+
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            return ChatConversation.objects.none()
+
+        if user.is_staff:
             return ChatConversation.objects.all().prefetch_related('messages', 'user', 'admin')
-        else:
-            # Regular users can only see their own conversations
-            return ChatConversation.objects.filter(user=self.request.user).prefetch_related('messages', 'user', 'admin')
+        return ChatConversation.objects.filter(user=user).prefetch_related('messages', 'user', 'admin')
 
     def get_serializer_class(self):
         if self.action == 'list':
@@ -189,6 +193,13 @@ class ChatMessageViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return ChatMessage.objects.none()
+
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            return ChatMessage.objects.none()
+
         conversation_id = self.request.query_params.get('conversation_id')
         if not conversation_id:
             return ChatMessage.objects.none()
@@ -196,8 +207,7 @@ class ChatMessageViewSet(viewsets.ReadOnlyModelViewSet):
         try:
             conversation = ChatConversation.objects.get(id=conversation_id)
 
-            # Check permissions
-            if not self.request.user.is_staff and conversation.user != self.request.user:
+            if not user.is_staff and conversation.user != user:
                 return ChatMessage.objects.none()
 
             return ChatMessage.objects.filter(conversation=conversation)

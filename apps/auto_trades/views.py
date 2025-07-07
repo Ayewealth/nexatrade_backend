@@ -23,15 +23,21 @@ class TradingPackageViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class PackageSubscriptionViewSet(viewsets.ModelViewSet):
-    """ViewSet for package subscriptions"""
     serializer_class = PackageSubscriptionSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         """Only allow users to see their own subscriptions"""
-        if self.request.user.is_staff:
+        if getattr(self, 'swagger_fake_view', False):
+            return PackageSubscription.objects.none()
+
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            return PackageSubscription.objects.none()
+
+        if user.is_staff:
             return PackageSubscription.objects.all()
-        return PackageSubscription.objects.filter(user=self.request.user)
+        return PackageSubscription.objects.filter(user=user)
 
     @action(detail=False, methods=['post'])
     def subscribe(self, request):
@@ -156,6 +162,13 @@ class AutoTradeViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         """Only allow users to see their own auto-trades"""
-        if self.request.user.is_staff:
+        if getattr(self, 'swagger_fake_view', False):
+            return AutoTrade.objects.none()
+
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            return AutoTrade.objects.none()
+
+        if user.is_staff:
             return AutoTrade.objects.all()
-        return AutoTrade.objects.filter(subscription__user=self.request.user)
+        return AutoTrade.objects.filter(subscription__user=user)
