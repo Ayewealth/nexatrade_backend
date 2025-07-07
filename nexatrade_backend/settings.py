@@ -43,8 +43,8 @@ FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
 if ENVIRONMENT == "production":
     ALLOWED_HOSTS = ['localhost', '127.0.0.1',
                      'nexatrade-backend.onrender.com', 'nexatradebackend-production.up.railway.app']
-    CSRF_TRUSTED_ORIGINS = ["https://nexatrade-backend.onrender.com/",
-                            "https://nexatradebackend-production.up.railway.app/"]
+    CSRF_TRUSTED_ORIGINS = ["https://nexatrade-backend.onrender.com",
+                            "https://nexatradebackend-production.up.railway.app"]
 else:
     ALLOWED_HOSTS = ["*"]
 
@@ -255,8 +255,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "https://nexatrade.vercel.app"
 ]
-if ENVIRONMENT == "development":
-    CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
