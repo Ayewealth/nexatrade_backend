@@ -36,7 +36,6 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default='False').lower() in ('true', '1')
 
-ALLOWED_HOSTS = []
 
 ENVIRONMENT = config('ENVIRONMENT', default='development')
 FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
@@ -80,6 +79,7 @@ LOCAL_APPS = [
     'apps.auto_trades',
     'apps.admin_panel',
     'apps.setup',
+    'apps.support',
 ]
 
 INSTALLED_APPS = ['daphne'] + DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -252,8 +252,11 @@ else:
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
     "https://nexatrade.vercel.app"
 ]
+if ENVIRONMENT == "development":
+    CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

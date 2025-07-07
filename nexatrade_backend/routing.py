@@ -1,11 +1,14 @@
 from channels.routing import ProtocolTypeRouter, URLRouter
-from channels.auth import AuthMiddlewareStack
+from apps.support.middleware import JWTAuthMiddleware
 import apps.trading.routing
+import apps.support.routing
+
 
 application = ProtocolTypeRouter({
-    "websocket": AuthMiddlewareStack(
+    "websocket": JWTAuthMiddleware(
         URLRouter(
             apps.trading.routing.websocket_urlpatterns
+            + apps.support.routing.websocket_urlpatterns
         )
     ),
 })

@@ -6,6 +6,7 @@ from .models import Market, Trade
 from apps.wallets.models import USDWallet
 from .serializers import MarketSerializer, TradeSerializer, CreateTradeSerializer
 from django.utils import timezone
+from utils.notifications import notify_admins
 
 
 class MarketViewSet(viewsets.ReadOnlyModelViewSet):
@@ -70,6 +71,19 @@ class TradeViewSet(viewsets.ModelViewSet):
             # Reduce USD wallet balance
             usd_wallet.balance -= required_margin
             usd_wallet.save()
+
+            # After usd_wallet.save() in create method:
+            notify_admins(
+                subject="New Trade Created",
+                message=(
+                    f"User {request.user.email} created a new trade.\n"
+                    f"Market: {market.name}\n"
+                    f"Trade Type: {trade_type}\n"
+                    f"Amount: {amount}\n"
+                    f"Leverage: {leverage}\n"
+                    f"Price: {market.current_price}\n"
+                )
+            )
 
             return Response(
                 TradeSerializer(trade).data,

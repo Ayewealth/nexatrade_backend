@@ -11,6 +11,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
+from utils.notifications import notify_admins
 
 import random
 
@@ -23,6 +24,11 @@ class RegisterView(generics.GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+
+            notify_admins(
+                subject="New User Registration",
+                message=f"New user registered with email: {user.email}, name: {user.full_name}"
+            )
 
             # Send welcome email with HTML template
             subject = "Welcome NexaTrade - Complete Your KYC"
@@ -86,6 +92,11 @@ class KYCViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """Assign current user when creating KYC document"""
         serializer.save(user=self.request.user)
+
+        notify_admins(
+            subject="New KYC Document Submitted",
+            message=f"User {self.request.user.email} submitted a new KYC document."
+        )
 
         # Update user's KYC status to pending after document submission
         user = self.request.user

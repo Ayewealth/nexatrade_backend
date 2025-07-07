@@ -12,6 +12,7 @@ from .serializers import (
     SubscribePackageSerializer, AutoTradeSerializer
 )
 from .services import AutoTradingService
+from utils.notifications import notify_admins
 
 
 class TradingPackageViewSet(viewsets.ReadOnlyModelViewSet):
@@ -83,6 +84,14 @@ class PackageSubscriptionViewSet(viewsets.ModelViewSet):
 
             # Immediately try to create first auto-trade
             AutoTradingService.create_auto_trade(subscription)
+
+            notify_admins(
+                subject="New Investment Subscription",
+                message=(
+                    f"User {request.user.email} subscribed to package '{package.name}' "
+                    f"with investment amount {investment_amount} USD."
+                )
+            )
 
             return Response(
                 PackageSubscriptionSerializer(subscription).data,

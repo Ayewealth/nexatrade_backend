@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'full_name',
-                  'phone_number', 'date_of_birth', 'address', 'kyc_status', 'profile_pic', 'is_staff')
+                  'phone_number', 'date_of_birth', 'address', 'kyc_status', 'profile_pic', 'is_staff', 'is_superuser')
         read_only_fields = ('id', 'kyc_status')
 
 
@@ -49,7 +49,7 @@ class UserProfileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'full_name',
-                  'phone_number', 'date_of_birth', 'address', 'kyc_status', 'profile_pic', 'is_staff')
+                  'phone_number', 'date_of_birth', 'address', 'kyc_status', 'profile_pic', 'is_staff', 'is_superuser')
         read_only_fields = ('id', 'kyc_status')
 
 
@@ -101,7 +101,8 @@ class AdminCreateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'is_staff', 'is_superuser']
+        fields = ['email', 'password', 'is_staff',
+                  'is_active', 'is_superuser']
 
     def create(self, validated_data):
         password = validated_data.pop('password')
