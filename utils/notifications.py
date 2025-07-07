@@ -14,6 +14,6 @@ def notify_admins(subject: str, message: str):
         subject=subject,
         message=message,
         from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list="nexatrade.info@gmail.com",
+        recipient_list=["nexatrade.info@gmail.com"],
         fail_silently=False,
     )
