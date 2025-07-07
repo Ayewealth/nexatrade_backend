@@ -1,6 +1,5 @@
 # apps/auto_trades/management/commands/populate_trading_packages.py
 from django.core.management.base import BaseCommand
-from apps.auto_trades.models import TradingPackage
 import json
 
 
@@ -8,6 +7,8 @@ class Command(BaseCommand):
     help = 'Populate trading packages'
 
     def handle(self, *args, **options):
+        from apps.auto_trades.models import TradingPackage
+        
         TRADING_PACKAGES = [
             {
                 'name': 'Conservative Growth',

@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-from apps.wallets.models import CryptoType
 from apps.wallets.utils import get_coinpaprika_coins_cached, get_coinpaprika_logo
 
 
@@ -7,6 +6,7 @@ class Command(BaseCommand):
     help = "Populate CryptoType from CoinGecko API"
 
     def handle(self, *args, **kwargs):
+        from apps.wallets.models import CryptoType
         self.stdout.write("Fetching crypto types from CoinGecko...")
         coins = get_coinpaprika_coins_cached()
 

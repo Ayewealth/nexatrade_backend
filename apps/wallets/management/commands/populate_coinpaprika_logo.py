@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-from apps.wallets.models import CryptoType
 from apps.wallets.utils import get_coinpaprika_logo
 
 
@@ -7,6 +6,8 @@ class Command(BaseCommand):
     help = "Fetch and update logos for all CryptoType entries from CoinPaprika"
 
     def handle(self, *args, **kwargs):
+        from apps.wallets.models import CryptoType
+
         cryptos = CryptoType.objects.all()
         updated_count = 0
         skipped = 0

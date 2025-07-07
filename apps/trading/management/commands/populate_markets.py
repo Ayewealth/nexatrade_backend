@@ -4,8 +4,6 @@ from django.core.management.base import BaseCommand
 from django.core.cache import cache
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from apps.wallets.models import CryptoType
-from apps.trading.models import Market
 from apps.trading.utils import get_market_tickers_cached, get_coinpaprika_tickers_cached
 
 
@@ -13,6 +11,9 @@ class Command(BaseCommand):
     help = "Populate Market data using CoinPaprika (batch) and fallback to CoinGecko"
 
     def handle(self, *args, **kwargs):
+        from apps.wallets.models import CryptoType
+        from apps.trading.models import Market
+
         channel_layer = get_channel_layer()
         total_markets_created = 0
         total_markets_updated = 0

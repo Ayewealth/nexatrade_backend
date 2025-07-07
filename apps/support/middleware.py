@@ -1,7 +1,6 @@
 import jwt
 from django.conf import settings
 from urllib.parse import parse_qs
-from apps.authentication.models import User
 from channels.middleware import BaseMiddleware
 from asgiref.sync import sync_to_async
 from rest_framework_simplejwt.tokens import UntypedToken
@@ -11,9 +10,12 @@ from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 @sync_to_async
 def get_user(token):
     try:
+        from apps.authentication.models import User  # ✅ Moved inside function
+
         UntypedToken(token)  # Verifies token
         decoded_data = jwt.decode(
-            token, settings.SECRET_KEY, algorithms=["HS256"])
+            token, settings.SECRET_KEY, algorithms=["HS256"]
+        )
         user = User.objects.get(id=decoded_data["user_id"])
         return user
     except (InvalidToken, TokenError, jwt.DecodeError, User.DoesNotExist):

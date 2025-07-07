@@ -1,18 +1,19 @@
+import apps.support.routing
+import apps.trading.routing
+from apps.support.middleware import JWTAuthMiddleware
 import os
 from channels.routing import ProtocolTypeRouter, URLRouter
-from apps.support.middleware import JWTAuthMiddleware
 from django.core.asgi import get_asgi_application
-
-import apps.trading.routing
-import apps.support.routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nexatrade_backend.settings")
 
-# Django's ASGI application to handle traditional HTTP requests
+# Initialize Django before any model-dependent imports
 django_asgi_app = get_asgi_application()
 
+# ✅ Now it's safe to import app code
+
 application = ProtocolTypeRouter({
-    "http": django_asgi_app,  # Handle HTTP requests with Django
+    "http": django_asgi_app,
     "websocket": JWTAuthMiddleware(
         URLRouter(
             apps.trading.routing.websocket_urlpatterns +
