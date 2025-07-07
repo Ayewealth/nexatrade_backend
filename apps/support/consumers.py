@@ -1,8 +1,6 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
-from .models import ChatConversation, ChatMessage
-from apps.authentication.models import User
 from .serializers import ChatMessageSerializer
 from django.contrib.auth.models import AnonymousUser
 
@@ -13,11 +11,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.room_group_name = f"chat_{self.conversation_id}"
         user = self.scope.get("user")
 
-        if not user or not user.is_authenticated:
-            await self.close()
-            return
-
-        if user == AnonymousUser():
+        if not user or not user.is_authenticated or user == AnonymousUser():
             await self.close()
             return
 
@@ -47,10 +41,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
             if not message:
                 return
 
-            # Save message
             chat_message = await self.save_message(user, message)
 
-            # Broadcast to group
             await self.channel_layer.group_send(
                 self.room_group_name,
                 {
@@ -60,7 +52,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             )
 
         elif message_type == "typing":
-            # Broadcast typing indicator
             await self.channel_layer.group_send(
                 self.room_group_name,
                 {
@@ -72,7 +63,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             )
 
         elif message_type == "stop_typing":
-            # Broadcast stop typing indicator
             await self.channel_layer.group_send(
                 self.room_group_name,
                 {
@@ -95,6 +85,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def save_message(self, user, message):
+        # ✅ Import here, after Django setup is guaranteed
+        from .models import ChatConversation, ChatMessage
+
         conversation = ChatConversation.objects.get(id=self.conversation_id)
         msg = ChatMessage.objects.create(
             conversation=conversation,

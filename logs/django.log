@@ -38418,3 +38418,24 @@ INFO 2025-07-07 02:08:39,631 autoreload 24632 3516 Watching for file changes wit
 INFO 2025-07-07 02:09:35,410 runserver 24632 32120 [mHTTP GET /api/support/chat/conversations/ 200 [0.16, 127.0.0.1:55613][0m
 INFO 2025-07-07 02:09:47,851 autoreload 24632 3516 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\asgi.py changed, reloading.
 INFO 2025-07-07 02:09:57,597 autoreload 23780 15516 Watching for file changes with StatReloader
+INFO 2025-07-07 02:10:35,985 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.39, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:11:35,381 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.12, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:12:35,339 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.09, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:13:35,375 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.11, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:14:35,350 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.09, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:15:35,369 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.12, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:16:35,345 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.09, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:17:35,362 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.11, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:18:35,394 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.13, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:19:35,412 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.16, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:20:35,350 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.09, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:21:35,371 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.12, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:22:35,359 runserver 23780 20476 [mHTTP GET /api/support/chat/conversations/ 200 [0.11, 127.0.0.1:57415][0m
+INFO 2025-07-07 02:22:56,966 autoreload 23780 15516 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\asgi.py changed, reloading.
+INFO 2025-07-07 02:23:13,175 autoreload 27172 27656 Watching for file changes with StatReloader
+INFO 2025-07-07 02:23:28,716 autoreload 27172 27656 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\apps\support\consumers.py changed, reloading.
+INFO 2025-07-07 02:23:40,288 autoreload 29460 30592 Watching for file changes with StatReloader
+INFO 2025-07-07 02:24:35,385 runserver 29460 20504 [mHTTP GET /api/support/chat/conversations/ 200 [0.12, 127.0.0.1:62097][0m
+INFO 2025-07-07 02:25:35,371 runserver 29460 20504 [mHTTP GET /api/support/chat/conversations/ 200 [0.11, 127.0.0.1:62097][0m
+INFO 2025-07-07 02:26:21,108 autoreload 29460 30592 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\apps\support\consumers.py changed, reloading.
+INFO 2025-07-07 02:26:35,392 autoreload 15384 32532 Watching for file changes with StatReloader
