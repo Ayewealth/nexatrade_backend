@@ -130,7 +130,7 @@ AUTH_USER_MODEL = 'authentication.User'
 #     }
 # else:
 if os.environ.get('RAILWAY_ENVIRONMENT') and BUILDING:
-    # On Railway during build, use SQLite to avoid DB errors
+    # On Railway during build, use SQLite's to avoid DB errors
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

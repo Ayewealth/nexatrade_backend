@@ -39082,3 +39082,66 @@ INFO 2025-07-14 04:41:52,089 runserver 11240 11272 [mHTTP GET /api/wallet/usd-w
 INFO 2025-07-14 04:41:52,104 runserver 11240 11272 [mHTTP GET /api/wallet/crypto-wallets/ 200 [0.39, 127.0.0.1:52201][0m
 INFO 2025-07-14 04:41:52,111 runserver 11240 11272 [mHTTP GET /api/wallet/transactions/wallet-usd-value/ 200 [0.38, 127.0.0.1:52203][0m
 INFO 2025-07-14 04:41:52,140 runserver 11240 11272 [mHTTP GET /api/wallet/transactions/portfolio-summary/ 200 [0.41, 127.0.0.1:52204][0m
+INFO 2025-07-16 02:15:37,134 autoreload 17748 23008 Watching for file changes with StatReloader
+INFO 2025-07-16 02:17:53,185 runserver 17748 22944 [mHTTP OPTIONS /api/auth/login/ 200 [0.03, 127.0.0.1:52253][0m
+INFO 2025-07-16 02:17:59,455 runserver 17748 22944 [mHTTP POST /api/auth/login/ 200 [6.25, 127.0.0.1:52253][0m
+INFO 2025-07-16 02:18:04,008 runserver 17748 22944 [mHTTP OPTIONS /api/auth/profile/ 200 [0.10, 127.0.0.1:52253][0m
+INFO 2025-07-16 02:18:04,607 runserver 17748 22944 [mHTTP GET /api/auth/profile/ 200 [0.58, 127.0.0.1:52253][0m
+INFO 2025-07-16 02:18:14,024 runserver 17748 22944 [mHTTP GET /api/auth/profile/ 200 [0.47, 127.0.0.1:52253][0m
+WARNING 2025-07-16 02:19:45,406 log 17748 1664 Unauthorized: /api/auth/profile/
+WARNING 2025-07-16 02:19:45,412 runserver 17748 22944 [31;1mHTTP GET /api/auth/profile/ 401 [0.04, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:45,557 log 17748 1664 Unauthorized: /api/auth/kyc/
+WARNING 2025-07-16 02:19:45,561 runserver 17748 22944 [31;1mHTTP GET /api/auth/kyc/ 401 [0.03, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:48,404 log 17748 1664 Unauthorized: /api/wallet/transactions/
+WARNING 2025-07-16 02:19:48,406 runserver 17748 22944 [31;1mHTTP GET /api/wallet/transactions/ 401 [0.03, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:48,479 log 17748 1664 Unauthorized: /api/wallet/crypto-wallets/
+WARNING 2025-07-16 02:19:48,487 runserver 17748 22944 [31;1mHTTP GET /api/wallet/crypto-wallets/ 401 [0.06, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:48,592 log 17748 1664 Unauthorized: /api/wallet/usd-wallets/
+WARNING 2025-07-16 02:19:48,613 runserver 17748 22944 [31;1mHTTP GET /api/wallet/usd-wallets/ 401 [0.09, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:48,704 log 17748 1664 Unauthorized: /api/wallet/transactions/wallet-usd-value/
+WARNING 2025-07-16 02:19:48,706 runserver 17748 22944 [31;1mHTTP GET /api/wallet/transactions/wallet-usd-value/ 401 [0.03, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:48,807 log 17748 1664 Unauthorized: /api/wallet/transactions/portfolio-summary/
+WARNING 2025-07-16 02:19:48,815 runserver 17748 22944 [31;1mHTTP GET /api/wallet/transactions/portfolio-summary/ 401 [0.04, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:48,913 log 17748 1664 Unauthorized: /api/trading/markets/
+WARNING 2025-07-16 02:19:48,917 runserver 17748 22944 [31;1mHTTP GET /api/trading/markets/ 401 [0.05, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:48,953 log 17748 1664 Unauthorized: /api/trading/trades/
+WARNING 2025-07-16 02:19:48,960 runserver 17748 22944 [31;1mHTTP GET /api/trading/trades/ 401 [0.03, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:49,022 log 17748 1664 Unauthorized: /api/auto_trades/packages/
+WARNING 2025-07-16 02:19:49,025 runserver 17748 22944 [31;1mHTTP GET /api/auto_trades/packages/ 401 [0.03, 127.0.0.1:52432][0m
+WARNING 2025-07-16 02:19:49,063 log 17748 1664 Unauthorized: /api/auto_trades/subscriptions/
+WARNING 2025-07-16 02:19:49,067 runserver 17748 22944 [31;1mHTTP GET /api/auto_trades/subscriptions/ 401 [0.03, 127.0.0.1:52432][0m
+INFO 2025-07-16 02:20:07,208 runserver 17748 22944 [mHTTP OPTIONS /api/wallet/crypto-wallets/ 200 [0.03, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:20:07,218 runserver 17748 22944 [mHTTP OPTIONS /api/wallet/usd-wallets/ 200 [0.03, 127.0.0.1:52468][0m
+INFO 2025-07-16 02:20:07,221 runserver 17748 22944 [mHTTP OPTIONS /api/wallet/transactions/wallet-usd-value/ 200 [0.03, 127.0.0.1:52469][0m
+INFO 2025-07-16 02:20:07,228 runserver 17748 22944 [mHTTP OPTIONS /api/wallet/transactions/portfolio-summary/ 200 [0.04, 127.0.0.1:52470][0m
+INFO 2025-07-16 02:20:07,233 runserver 17748 22944 [mHTTP OPTIONS /api/wallet/transactions/ 200 [0.04, 127.0.0.1:52471][0m
+INFO 2025-07-16 02:20:07,244 runserver 17748 22944 [mHTTP OPTIONS /api/trading/trades/ 200 [0.04, 127.0.0.1:52472][0m
+INFO 2025-07-16 02:20:07,283 runserver 17748 22944 [mHTTP OPTIONS /api/auto_trades/subscriptions/ 200 [0.06, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:20:08,362 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/ 200 [1.07, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:20:08,433 runserver 17748 22944 [mHTTP GET /api/wallet/usd-wallets/ 200 [1.18, 127.0.0.1:52470][0m
+INFO 2025-07-16 02:20:08,677 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/wallet-usd-value/ 200 [1.41, 127.0.0.1:52471][0m
+INFO 2025-07-16 02:20:08,689 runserver 17748 22944 [mHTTP GET /api/auth/profile/ 200 [1.45, 127.0.0.1:52468][0m
+INFO 2025-07-16 02:20:08,726 runserver 17748 22944 [mHTTP GET /api/wallet/crypto-wallets/ 200 [1.47, 127.0.0.1:52469][0m
+INFO 2025-07-16 02:20:08,741 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/portfolio-summary/ 200 [1.47, 127.0.0.1:52472][0m
+INFO 2025-07-16 02:20:09,101 runserver 17748 22944 [mHTTP GET /api/trading/trades/ 200 [0.58, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:20:09,185 runserver 17748 22944 [mHTTP GET /api/auto_trades/subscriptions/ 200 [0.57, 127.0.0.1:52470][0m
+INFO 2025-07-16 02:20:16,427 runserver 17748 22944 [mHTTP GET /api/auth/profile/ 200 [0.31, 127.0.0.1:52470][0m
+INFO 2025-07-16 02:20:16,541 runserver 17748 22944 [mHTTP GET /api/wallet/crypto-wallets/ 200 [0.40, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:20:16,683 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/ 200 [0.53, 127.0.0.1:52471][0m
+INFO 2025-07-16 02:20:16,792 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/portfolio-summary/ 200 [0.64, 127.0.0.1:52468][0m
+INFO 2025-07-16 02:20:16,863 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/wallet-usd-value/ 200 [0.71, 127.0.0.1:52469][0m
+INFO 2025-07-16 02:20:16,926 runserver 17748 22944 [mHTTP GET /api/wallet/usd-wallets/ 200 [0.77, 127.0.0.1:52472][0m
+INFO 2025-07-16 02:20:16,990 runserver 17748 22944 [mHTTP GET /api/trading/trades/ 200 [0.55, 127.0.0.1:52470][0m
+INFO 2025-07-16 02:20:17,087 runserver 17748 22944 [mHTTP GET /api/auto_trades/subscriptions/ 200 [0.50, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:21:09,465 runserver 17748 22944 [mHTTP GET /api/auth/profile/ 200 [0.25, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:21:09,640 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/ 200 [0.37, 127.0.0.1:52471][0m
+INFO 2025-07-16 02:21:09,648 runserver 17748 22944 [mHTTP GET /api/wallet/crypto-wallets/ 200 [0.40, 127.0.0.1:52470][0m
+INFO 2025-07-16 02:21:09,740 runserver 17748 22944 [mHTTP GET /api/wallet/usd-wallets/ 200 [0.48, 127.0.0.1:52472][0m
+INFO 2025-07-16 02:21:09,789 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/wallet-usd-value/ 200 [0.53, 127.0.0.1:52469][0m
+INFO 2025-07-16 02:21:09,807 runserver 17748 22944 [mHTTP GET /api/wallet/transactions/portfolio-summary/ 200 [0.54, 127.0.0.1:52468][0m
+INFO 2025-07-16 02:21:09,900 runserver 17748 22944 [mHTTP GET /api/trading/trades/ 200 [0.42, 127.0.0.1:52467][0m
+INFO 2025-07-16 02:21:10,025 runserver 17748 22944 [mHTTP GET /api/auto_trades/subscriptions/ 200 [0.36, 127.0.0.1:52471][0m
+INFO 2025-07-16 02:21:15,005 runserver 17748 22944 [mHTTP GET /api/trading/trades/ 200 [0.09, 127.0.0.1:52471][0m
+INFO 2025-07-16 02:21:15,149 runserver 17748 22944 [mHTTP GET /api/auto_trades/subscriptions/ 200 [0.10, 127.0.0.1:52471][0m
+INFO 2025-07-16 02:45:59,912 autoreload 17748 23008 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\settings.py changed, reloading.
+INFO 2025-07-16 02:46:15,517 autoreload 4444 32584 Watching for file changes with StatReloader
