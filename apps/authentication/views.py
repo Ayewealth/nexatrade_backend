@@ -12,8 +12,26 @@ from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from utils.notifications import notify_admins
-
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 import random
+
+
+class CustomLoginView(TokenObtainPairView):
+    serializer_class = TokenObtainPairSerializer
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+
+        # If login is successful, notify admins
+        if response.status_code == 200:
+            user = User.objects.get(email=request.data.get("email"))
+            notify_admins(
+                subject="User Logged In",
+                message=f"User {user.full_name} ({user.email}) just logged in."
+            )
+
+        return response
 
 
 class RegisterView(generics.GenericAPIView):

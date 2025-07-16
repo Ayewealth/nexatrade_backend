@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='auth-register'),
-    path('login/', TokenObtainPairView.as_view(), name='auth-login'),
+    path('login/', CustomLoginView.as_view(), name='auth-login'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
     path('logout/', LogoutView.as_view(), name='auth-logout'),
     path('kyc/', KYCViewSet.as_view({
