@@ -26,10 +26,10 @@ class CustomLoginView(TokenObtainPairView):
         # If login is successful, notify admins
         if response.status_code == 200:
             user = User.objects.get(email=request.data.get("email"))
-            notify_admins(
-                subject="User Logged In",
-                message=f"User {user.full_name} ({user.email}) just logged in."
-            )
+            # notify_admins(
+            #     subject="User Logged In",
+            #     message=f"User {user.full_name} ({user.email}) just logged in."
+            # )
 
         return response
 
@@ -43,10 +43,10 @@ class RegisterView(generics.GenericAPIView):
         if serializer.is_valid():
             user = serializer.save()
 
-            notify_admins(
-                subject="New User Registration",
-                message=f"New user registered with email: {user.email}, name: {user.full_name}"
-            )
+            # notify_admins(
+            #     subject="New User Registration",
+            #     message=f"New user registered with email: {user.email}, name: {user.full_name}"
+            # )
 
             # Send welcome email with HTML template
             subject = "Welcome NexaTrade - Complete Your KYC"
@@ -119,10 +119,10 @@ class KYCViewSet(viewsets.ModelViewSet):
         """Assign current user when creating KYC document"""
         serializer.save(user=self.request.user)
 
-        notify_admins(
-            subject="New KYC Document Submitted",
-            message=f"User {self.request.user.email} submitted a new KYC document."
-        )
+        # notify_admins(
+        #     subject="New KYC Document Submitted",
+        #     message=f"User {self.request.user.email} submitted a new KYC document."
+        # )
 
         # Update user's KYC status to pending after document submission
         user = self.request.user
