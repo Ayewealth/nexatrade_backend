@@ -49,17 +49,17 @@ class RegisterView(generics.GenericAPIView):
             # )
 
             # Send welcome email with HTML template
-            subject = "Welcome NexaTrade - Complete Your KYC"
-            from_email = settings.DEFAULT_FROM_EMAIL
-            to_email = user.email
+            # subject = "Welcome NexaTrade - Complete Your KYC"
+            # from_email = settings.DEFAULT_FROM_EMAIL
+            # to_email = user.email
 
-            kyc_verification_link = f"{settings.FRONTEND_URL}/dashboard/profile"
+            # kyc_verification_link = f"{settings.FRONTEND_URL}/dashboard/profile"
 
-            html_content = render_to_string(
-                'emails/welcome.html', {'user': user, 'kyc_verification_link': kyc_verification_link})
-            msg = EmailMultiAlternatives(subject, '', from_email, [to_email])
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
+            # html_content = render_to_string(
+            #     'emails/welcome.html', {'user': user, 'kyc_verification_link': kyc_verification_link})
+            # msg = EmailMultiAlternatives(subject, '', from_email, [to_email])
+            # msg.attach_alternative(html_content, "text/html")
+            # msg.send()
 
             refresh = RefreshToken.for_user(user)
             return Response({

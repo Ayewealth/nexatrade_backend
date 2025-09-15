@@ -39145,3 +39145,48 @@ INFO 2025-07-16 02:21:15,005 runserver 17748 22944 [mHTTP GET /api/trading/trad
 INFO 2025-07-16 02:21:15,149 runserver 17748 22944 [mHTTP GET /api/auto_trades/subscriptions/ 200 [0.10, 127.0.0.1:52471][0m
 INFO 2025-07-16 02:45:59,912 autoreload 17748 23008 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\settings.py changed, reloading.
 INFO 2025-07-16 02:46:15,517 autoreload 4444 32584 Watching for file changes with StatReloader
+INFO 2025-09-11 16:35:23,194 autoreload 20340 25848 Watching for file changes with StatReloader
+INFO 2025-09-11 16:44:12,491 autoreload 20340 25848 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\settings.py changed, reloading.
+INFO 2025-09-11 16:44:22,322 autoreload 22676 20696 Watching for file changes with StatReloader
+WARNING 2025-09-11 16:44:31,750 log 22676 21840 Not Found: /
+WARNING 2025-09-11 16:44:31,754 runserver 22676 27848 [33mHTTP GET / 404 [0.17, 127.0.0.1:64461][0m
+WARNING 2025-09-11 16:44:32,071 log 22676 21840 Not Found: /favicon.ico
+WARNING 2025-09-11 16:44:32,075 runserver 22676 27848 [33mHTTP GET /favicon.ico 404 [0.06, 127.0.0.1:64461][0m
+WARNING 2025-09-11 16:44:41,611 log 22676 21840 Not Found: /api
+WARNING 2025-09-11 16:44:41,613 runserver 22676 27848 [33mHTTP GET /api 404 [0.04, 127.0.0.1:64461][0m
+INFO 2025-09-11 16:44:47,681 runserver 22676 27848 [32mHTTP GET /swagger 301 [0.03, 127.0.0.1:64461][0m
+INFO 2025-09-11 16:44:48,041 runserver 22676 27848 [mHTTP GET /swagger/ 200 [0.35, 127.0.0.1:64461][0m
+INFO 2025-09-11 16:44:48,788 runserver 22676 27848 [mHTTP GET /static/drf-yasg/style.css 200 [0.72, 127.0.0.1:64461][0m
+INFO 2025-09-11 16:44:48,797 runserver 22676 27848 [mHTTP GET /static/drf-yasg/insQ.min.js 200 [0.71, 127.0.0.1:49914][0m
+INFO 2025-09-11 16:44:48,852 runserver 22676 27848 [mHTTP GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css 200 [0.78, 127.0.0.1:61617][0m
+INFO 2025-09-11 16:44:48,938 runserver 22676 27848 [mHTTP GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js 200 [0.85, 127.0.0.1:61960][0m
+INFO 2025-09-11 16:44:48,964 runserver 22676 27848 [mHTTP GET /static/drf-yasg/swagger-ui-init.js 200 [0.16, 127.0.0.1:64461][0m
+INFO 2025-09-11 16:44:48,994 runserver 22676 27848 [mHTTP GET /static/drf-yasg/immutable.min.js 200 [0.90, 127.0.0.1:55159][0m
+INFO 2025-09-11 16:44:49,261 runserver 22676 27848 [mHTTP GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js 200 [1.17, 127.0.0.1:61054][0m
+INFO 2025-09-11 16:44:49,793 runserver 22676 27848 [mHTTP GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png 200 [0.29, 127.0.0.1:55159][0m
+INFO 2025-09-11 16:44:49,798 runserver 22676 27848 [mHTTP GET /swagger/?format=openapi 200 [0.35, 127.0.0.1:61054][0m
+ERROR 2025-09-11 16:46:09,056 log 22676 11460 Internal Server Error: /api/auth/register/
+Traceback (most recent call last):
+  File "C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\venv\Lib\site-packages\asgiref\sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\venv\Lib\site-packages\asgiref\sync.py", line 518, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\venv\Lib\site-packages\asgiref\sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+ERROR 2025-09-11 16:46:09,088 runserver 22676 27848 [35;1mHTTP POST /api/auth/register/ 500 [26.20, 127.0.0.1:61054][0m
+INFO 2025-09-11 16:57:43,295 autoreload 22676 20696 C:\Users\Admin\OneDrive - inhouz.io\Documents\Work\Brokers\nexatrade_backend\nexatrade_backend\settings.py changed, reloading.
+INFO 2025-09-11 16:57:53,392 autoreload 27192 24260 Watching for file changes with StatReloader
+INFO 2025-09-11 16:58:11,169 autoreload 23456 15480 Watching for file changes with StatReloader
+INFO 2025-09-11 16:59:14,470 runserver 27192 10868 [mHTTP GET /swagger/ 200 [0.31, 127.0.0.1:63092][0m
+INFO 2025-09-11 16:59:15,794 runserver 27192 10868 [mHTTP GET /swagger/?format=openapi 200 [0.71, 127.0.0.1:63092][0m
+WARNING 2025-09-11 16:59:49,376 log 27192 18496 Bad Request: /api/auth/register/
+WARNING 2025-09-11 16:59:49,379 runserver 27192 10868 [31;1mHTTP POST /api/auth/register/ 400 [0.38, 127.0.0.1:55757][0m
+INFO 2025-09-11 17:01:35,019 runserver 27192 10868 [mHTTP POST /api/auth/register/ 201 [9.22, 127.0.0.1:64754][0m
