@@ -69,15 +69,15 @@ def update_market_prices_task():
 
 def create_or_update_market_price_task():
     """
-    Ensures a periodic task is created to update market prices every 5 minutes.
+    Ensures a periodic task is created to update market prices every 12 hours.
     """
     schedule, _ = IntervalSchedule.objects.get_or_create(
-        every=5,  # Adjust frequency as needed
-        period=IntervalSchedule.MINUTES
+        every=12, 
+        period=IntervalSchedule.HOURS
     )
 
     PeriodicTask.objects.update_or_create(
-        name='Update Market Prices Every 5 Minute',
+        name='Update Market Prices Every 12 Hours',
         defaults={
             'interval': schedule,
             'task': 'apps.trading.tasks.update_market_prices_task',
